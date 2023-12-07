@@ -1,5 +1,5 @@
-#inp = open("dag4.txt","r")
-inp = open("dag4_test.txt","r")
+inp = open("./kalender/dag4.txt","r")
+#inp = open("./kalender/dag4_test.txt","r")
 text= inp.read()
 
 text = text.splitlines()
@@ -31,7 +31,7 @@ for i in range(len(text)):
         while("" in card2): 
             card2.remove("")        
         
-        #print(card2)
+        print(card2)
 
         if case == True:
             win = card2
@@ -53,7 +53,8 @@ for i in range(len(text)):
                     cache[o+1] += 1
             print("Antall rette denne runden: ",right)
             print("Ny cache", cache)
-        
+
+
             total += cache[0]
             print("Total så langt: ", total)
         
