@@ -1,21 +1,23 @@
 inp = open("./kalender/dag4.txt","r")
 #inp = open("./kalender/dag4_test.txt","r")
-text= inp.read()
+cards= inp.read()
 
-text = text.splitlines()
-total = 0
-num = 0
-cache = [1,1,1,1,1,1,1,1,1,1]
+cards = cards.splitlines()
+totalScorecards = 0
+cardNum = 0
+# hhæh?
+cache = [1,1,1,1,1,1,1,1,1,1,1]
 
-for i in range(len(text)):
-    num += 1
-    card = text[i].split(":")[1]
-    card = card.split("|")
+for i in range(len(cards)):
+    cardNum += 1
+    # [[winning numbers], [your numbers]]
+    card = cards[i].split(":")[1].split("|")
+    print(f"card: {card}")
 
     win = []
-    right = 0
+    winningNumbers = 0
     
-    print("Card: ", num)
+    print("Card: ", cardNum)
     for j in range(len(card)):
         
         if (j % 2) == 0:
@@ -26,7 +28,6 @@ for i in range(len(text)):
         
         card2 = card[j].split(" ")
         
-        
 
         while("" in card2): 
             card2.remove("")        
@@ -34,33 +35,34 @@ for i in range(len(text)):
         print(card2)
 
         if case == True:
+            # add winning cards
             win = card2
 
         elif case == False:
 
             for k in range(len(card2)):
                 if card2[k] in win:
-                    right += 1
+                    winningNumbers += 1
             
-            if right > 9:
-                right = 9
+            if winningNumbers > 10:
+                winningNumbers = 10
             for b in range(0,cache[0]):
                 #print("test")
-                for o in range(0,right):
+                for o in range(0,winningNumbers):
                 #if cache[0] > 1:
                 #    cache[o+1] += cache[0]
                 #else:
                     cache[o+1] += 1
-            print("Antall rette denne runden: ",right)
+            print("Antall rette denne runden: ",winningNumbers)
             print("Ny cache", cache)
 
 
-            total += cache[0]
-            print("Total så langt: ", total)
+            totalScorecards += cache[0]
+            print("Total så langt: ", totalScorecards)
         
             del cache[0]
             cache.append(1)
             print("Reset cache", cache)
     print("\n")
     
-print(total)
+print(totalScorecards)
