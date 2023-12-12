@@ -1,4 +1,5 @@
 inp = open("./kalender/dag1.txt","r")
+#inp = open("./kalender/test1.txt","r")
 text= inp.read()
 
 writtenNumbers = {"one":"1","two":"2","three":"3","four":"4","five":"5","six":"6","seven":"7","eight":"8","nine":"9"}
@@ -14,9 +15,12 @@ numbers = "123456789"
 #text = text.replace("nine","9")
 
 text = text.splitlines()
+print(len(text))
+rowz = 0
 
 x = 0
 for i, row in enumerate(text): 
+    rowz += 1
     firstIndex = 1000
     lastIndex = -1
     firstNumber = None
@@ -48,13 +52,14 @@ for i, row in enumerate(text):
             lastIndex = numberIndex
             lastNumber = n
 
-        
-    print(firstNumber, lastNumber)
+    #print(row)
+    #print(firstNumber, lastNumber)
     s = firstNumber + lastNumber
-    print(x)
+    #print("add: ",s)
+    #print("total: ",x)
     
     x += int(s)
-    
+print(rowz)
 print(x)
 
 #print(text)
