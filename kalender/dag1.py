@@ -52,6 +52,32 @@ for i, row in enumerate(text):
             lastIndex = numberIndex
             lastNumber = n
 
+    for writtenNumber, number in writtenNumbers.items():
+        numberIndex = row.rfind(writtenNumber)
+
+        if numberIndex == -1:
+            continue
+        if numberIndex < firstIndex:
+            firstIndex = numberIndex
+            firstNumber = number
+        if numberIndex > lastIndex:
+            lastIndex = numberIndex
+            lastNumber = number
+
+
+    for n in numbers:
+        numberIndex = row.rfind(n)
+
+        if numberIndex == -1:
+            continue
+        if numberIndex < firstIndex:
+            firstIndex = numberIndex
+            firstNumber = n
+        if numberIndex > lastIndex:
+            lastIndex = numberIndex
+            lastNumber = n
+
+
     #print(row)
     #print(firstNumber, lastNumber)
     s = firstNumber + lastNumber
